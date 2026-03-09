@@ -1,0 +1,38 @@
+{
+    "name": "AgentVoice",
+    "description": "AI voice & audio services — real-time voice calls, transcription, and text-to-speech. Pay with crypto credits.",
+    "version": "1.0.0",
+    "mcpServers": {
+        "agentvoice": {
+            "url": "https://agentvoice.app/mcp",
+            "transport": {
+                "type": "streamable-http"
+            }
+        }
+    },
+    "tools": [
+        "create_account",
+        "get_account",
+        "buy_credits",
+        "check_payment",
+        "list_services",
+        "initiate_call",
+        "get_call_status",
+        "get_call_transcript",
+        "get_call_recording",
+        "get_call_summary",
+        "transcribe_audio",
+        "get_transcription",
+        "text_to_speech",
+        "get_tts_result"
+    ],
+    "quickstart": {
+        "steps": [
+            "Add this MCP server to your AI system configuration",
+            "Use the create_account tool to register and get an API key",
+            "Use buy_credits to purchase credits via crypto",
+            "Use list_services to see available tiers and pricing",
+            "Use initiate_call, transcribe_audio, or text_to_speech to use services"
+        ]
+    }
+}
