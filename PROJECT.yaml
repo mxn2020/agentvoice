@@ -1,22 +1,18 @@
-id: 9a357f03-a47c-438d-a4c1-400ea807d103
 name: agentvoice
+project_scope: main
+project_type: standalone
 description: "MCP server for AI agents — paid AI voice call, transcription & TTS services with credit-based crypto billing"
 tier: development
 lane: main
 priority: high
-category: ai-services
-focus: true
-open_tasks: 0
 oss: false
 stack: [typescript, react, convex, vite, mcp]
-repo: https://github.com/mxn2020/agentvoice
+repo: "https://github.com/mxn2020/agentvoice"
 deploy_url: null
 last_active: 2026-03-02
 tags: [mcp, voice, transcription, tts, crypto, ai-agents]
-notes: >
-  Agent-facing MCP server providing paid voice/audio services.
-  AI agents use MCP tools to create accounts, buy credits (crypto),
-  initiate AI voice calls, and retrieve transcripts/recordings/summaries.
-  Admin configures providers and tiers; agents see Basic/Pro/Premium.
-  Also offers voice transcription and text-to-audio services.
-  Built on geenius-template.
+notes: ">"
+category: fullstack-app
+focus: true
+open_tasks: 0
+id: 9a357f03-a47c-438d-a4c1-400ea807d103

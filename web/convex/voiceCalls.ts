@@ -1,13 +1,14 @@
 import { internalMutation, internalQuery } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { v } from "convex/values";
+import { Id } from "./_generated/dataModel";
 
 // ── Internal Queries ─────────────────────────────────────────
 
 export const getCallById = internalQuery({
     args: { callId: v.string(), userId: v.string() },
     handler: async (ctx, { callId, userId }) => {
-        const call = await ctx.db.get(callId as any);
+        const call = await ctx.db.get(callId as Id<"voiceCalls">);
         if (!call || call.userId !== userId) return null;
         return call;
     },
@@ -17,7 +18,7 @@ export const getTranscript = internalQuery({
     args: { callId: v.string(), userId: v.string() },
     handler: async (ctx, { callId, userId }) => {
         // Verify ownership
-        const call = await ctx.db.get(callId as any);
+        const call = await ctx.db.get(callId as Id<"voiceCalls">);
         if (!call || call.userId !== userId) return null;
 
         return await ctx.db
@@ -30,7 +31,7 @@ export const getTranscript = internalQuery({
 export const getRecording = internalQuery({
     args: { callId: v.string(), userId: v.string() },
     handler: async (ctx, { callId, userId }) => {
-        const call = await ctx.db.get(callId as any);
+        const call = await ctx.db.get(callId as Id<"voiceCalls">);
         if (!call || call.userId !== userId) return null;
 
         return await ctx.db
@@ -43,7 +44,7 @@ export const getRecording = internalQuery({
 export const getSummary = internalQuery({
     args: { callId: v.string(), userId: v.string() },
     handler: async (ctx, { callId, userId }) => {
-        const call = await ctx.db.get(callId as any);
+        const call = await ctx.db.get(callId as Id<"voiceCalls">);
         if (!call || call.userId !== userId) return null;
 
         return await ctx.db

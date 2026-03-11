@@ -12,6 +12,9 @@ export default defineSchema({
         role: v.union(v.literal("user"), v.literal("admin")),
         plan: v.optional(v.string()),
         createdAt: v.optional(v.number()),
+        stripeCustomerId: v.optional(v.string()),
+        monthlyUsageCount: v.optional(v.number()),
+        usageResetAt: v.optional(v.number()),
     }).index("by_userId", ["userId"]),
 
     // ── API Keys (Agent Authentication) ──────────────────────────
@@ -327,4 +330,36 @@ export default defineSchema({
         tokens: v.number(),
         lastRefill: v.number(),
     }).index("by_key", ["key"]),
+
+    // ── Model Costs ──────────────────────────────────────────────
+    modelCosts: defineTable({
+        model: v.string(),
+        displayName: v.optional(v.string()),
+        inputCostPer1k: v.number(),
+        outputCostPer1k: v.number(),
+        updatedAt: v.optional(v.number()),
+    }).index("by_model", ["model"]),
+
+    // ── Model Tests ──────────────────────────────────────────────
+    modelTests: defineTable({
+        testRunId: v.string(),
+        model: v.string(),
+        mode: v.string(),
+        imageSize: v.number(),
+        startedAt: v.number(),
+        completedAt: v.number(),
+        durationMs: v.number(),
+        promptTokens: v.number(),
+        completionTokens: v.number(),
+        totalTokens: v.number(),
+        rawResponse: v.string(),
+        parsedResult: v.optional(v.string()),
+        parseSuccess: v.boolean(),
+        hasAllFields: v.boolean(),
+        qualityNotes: v.optional(v.string()),
+        status: v.string(),
+        errorMessage: v.optional(v.string()),
+    })
+        .index("by_startedAt", ["startedAt"])
+        .index("by_testRunId", ["testRunId"]),
 });

@@ -255,7 +255,7 @@ export const createPortalSession = action({
 
         const siteUrl: string = process.env.SITE_URL ?? "http://localhost:5173";
 
-        const profile: { stripeCustomerId?: string } | null = await ctx.runQuery(
+        const profile = await ctx.runQuery(
             internal.users.getProfileByUserId, { userId }
         );
         if (!profile?.stripeCustomerId) {

@@ -1,13 +1,14 @@
 import { internalMutation, internalQuery } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { v } from "convex/values";
+import { Id } from "./_generated/dataModel";
 
 // ── Internal Queries ─────────────────────────────────────────
 
 export const getJob = internalQuery({
     args: { jobId: v.string(), userId: v.string() },
     handler: async (ctx, { jobId, userId }) => {
-        const job = await ctx.db.get(jobId as any);
+        const job = await ctx.db.get(jobId as Id<"ttsJobs">);
         if (!job || job.userId !== userId) return null;
         return job;
     },
